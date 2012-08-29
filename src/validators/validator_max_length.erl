@@ -17,4 +17,5 @@ render_action(Record)  ->
     wf:f("v.add(Validate.Length, { maximum: ~p, tooLongMessage: \"~s\" });", [Length, Text]).
 
 validate(Record, Value) ->
-    Record#max_length.length >= length(Value).
+    Record#max_length.length >= length(unicode:characters_to_list(list_to_binary(Value))).
+

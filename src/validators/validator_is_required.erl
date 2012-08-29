@@ -17,4 +17,4 @@ render_action(Record) ->
 validate(_, undefined) ->
     false;
 validate(_, Value) ->
-    Value /= [].
+    string:strip(Value) /= [].

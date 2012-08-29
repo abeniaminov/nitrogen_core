@@ -15,4 +15,5 @@ render_action(Record)  ->
     wf:f("v.add(Validate.Length, { minimum: ~p, tooShortMessage: \"~s\" });", [Length, Text]).
 
 validate(Record, Value) ->
-    Record#min_length.length =< length(Value).
+    Record#min_length.length =<  length(unicode:characters_to_list(list_to_binary(Value))).
+
